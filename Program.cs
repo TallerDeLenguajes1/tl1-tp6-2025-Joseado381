@@ -9,10 +9,12 @@
 
 
 Console.WriteLine(@"
-   ___   _   _    ___ _   _ _      _   ___   ___  ___    _   
-  / __| /_\ | |  / __| | | | |    /_\ |   \ / _ \| _ \  /_\  
- | (__ / _ \| |_| (__| |_| | |__ / _ \| |) | (_) |   / / _ \ 
-  \___/_/ \_\____\___|\___/|____/_/ \_\___/ \___/|_|_\/_/ \_\
+   ____    _    _     ____ _   _ _        _    ____   ___  ____      _     __     ______  
+  / ___|  / \  | |   / ___| | | | |      / \  |  _ \ / _ \|  _ \    / \    \ \   / /___ \ 
+ | |     / _ \ | |  | |   | | | | |     / _ \ | | | | | | | |_) |  / _ \    \ \ / /  __) |
+ | |___ / ___ \| |__| |___| |_| | |___ / ___ \| |_| | |_| |  _ <  / ___ \    \ V /  / __/ 
+  \____/_/   \_\_____\____|\___/|_____/_/   \_\____/ \___/|_| \_\/_/   \_\    \_/  |_____|
+                                                                                          
 ");
 bool flag;
 do
@@ -33,22 +35,18 @@ do
             switch (operacion)
             {
                 case 1:
-                    int resultadoSuma = a + b;
-                    Console.WriteLine("El resultado de la suma: " + resultadoSuma);
+                    Console.WriteLine("");
                     break;
                 case 2:
-                    int resultadoResta = a - b;
-                    Console.WriteLine("El resultado de la resta: " + resultadoResta);
+                    Console.WriteLine("");
                     break;
                 case 3:
-                    int resultadoProducto = a * b;
-                    Console.WriteLine("El resultado del producto: " + resultadoProducto);
+
+                    Console.WriteLine("");
                     break;
                 case 4:
-                    int resultadoDivision = a / b;
-                    int resultadoResto = a % b;
-                    Console.WriteLine("El resultado de la division: " + resultadoDivision);
-                    Console.WriteLine("El resto es: " + resultadoResto);
+                    
+                    Console.WriteLine("");
                     break;
             }
             Console.WriteLine("Desea Realizar otro calculo? Y/N");
