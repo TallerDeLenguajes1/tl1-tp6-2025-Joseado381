@@ -1,10 +1,25 @@
-﻿Console.WriteLine("Hello, World!");
+﻿bool esNumero;
+do
+{
+    Console.WriteLine("Ingrese una cadena de numeros para ivertirlos:");
+    string texto = Console.ReadLine();
 
-int a; 
-int b; 
+    int invertido = 0, aux = 0;
 
-a=10; 
-b=a; 
+    esNumero = int.TryParse(texto, out int numero);
 
-Console.WriteLine("valor de a:"+a); 
-Console.WriteLine("valor de b:"+b); 
+    if (esNumero)
+    {
+        while (numero > 0)
+        {
+            aux = numero % 10;
+            invertido = invertido * 10 + aux;
+            numero /= 10;
+        }
+        Console.WriteLine("El numero invertido es: " + invertido);
+    }else
+    {
+        Console.WriteLine("La cadena ingresada no es un numero");
+    }
+    
+} while (esNumero == false);
