@@ -43,7 +43,7 @@ do
             }
             Console.WriteLine("Desea Realizar otro calculo? Y/N");
             string repeticion = Console.ReadLine();
-            if (repeticion.ToUpper()=="Y")
+            if (repeticion == "Y" || repeticion == "y")
             {
                 flag = true;
             }
