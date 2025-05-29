@@ -25,28 +25,31 @@ do
     {
         flag = false;
 
-        Console.WriteLine("Ingrese dos numeros:");
+        Console.WriteLine("Ingrese un numero:\n\t (Nota: Si ingresa un numero decimal, se tomara la parte entera del mismo)");
 
-        bool boolA = int.TryParse(Console.ReadLine(), out int a);
-        bool boolB = int.TryParse(Console.ReadLine(), out int b);
+        bool boolA = double.TryParse(Console.ReadLine(), out double a);
 
-        if (boolA && boolB)
+        if (boolA)
         {
             switch (operacion)
             {
                 case 1:
-                    Console.WriteLine("");
+                    Console.Write($"El valor absoluto de({a}) es {Math.Abs(a)}");
                     break;
                 case 2:
-                    Console.WriteLine("");
+                    Console.Write($"La Raiz cuadrada de({a}) es {Math.Pow(a,2)}");
                     break;
                 case 3:
-
-                    Console.WriteLine("");
+                    Console.Write($"El cuadrado de({a}) es {Math.Sqrt(a)}");
                     break;
                 case 4:
-                    
-                    Console.WriteLine("");
+                    Console.Write($"El Seno de({a}) es {Math.Asin(a)}");
+                    break;
+                case 5:
+                    Console.Write($"El Coseno de({a}) es {Math.Acos(a)}");
+                    break;
+                case 6:
+                    Console.Write($"La Parte entera  de({a}) es {Math.Floor(a)}");
                     break;
             }
             Console.WriteLine("Desea Realizar otro calculo? Y/N");
