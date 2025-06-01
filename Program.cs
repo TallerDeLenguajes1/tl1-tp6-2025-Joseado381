@@ -1,14 +1,16 @@
 ﻿
-
 Console.WriteLine(@"
-   ____    _    _     ____ _   _ _        _    ____   ___  ____      _     __     ______  
-  / ___|  / \  | |   / ___| | | | |      / \  |  _ \ / _ \|  _ \    / \    \ \   / /___ \ 
- | |     / _ \ | |  | |   | | | | |     / _ \ | | | | | | | |_) |  / _ \    \ \ / /  __) |
- | |___ / ___ \| |__| |___| |_| | |___ / ___ \| |_| | |_| |  _ <  / ___ \    \ V /  / __/ 
-  \____/_/   \_\_____\____|\___/|_____/_/   \_\____/ \___/|_| \_\/_/   \_\    \_/  |_____|
-                                                                                          
+  ______     ___       __        ______  __    __   __          ___       _______   ______   .______          ___   ____    ____  ___      __  
+ /      |   /   \     |  |      /      ||  |  |  | |  |        /   \     |       \ /  __  \  |   _  \        /   \  \   \  /   / |__ \    /_ | 
+|  ,----'  /  ^  \    |  |     |  ,----'|  |  |  | |  |       /  ^  \    |  .--.  |  |  |  | |  |_)  |      /  ^  \  \   \/   /     ) |    | | 
+|  |      /  /_\  \   |  |     |  |     |  |  |  | |  |      /  /_\  \   |  |  |  |  |  |  | |      /      /  /_\  \  \      /     / /     | | 
+|  `----./  _____  \  |  `----.|  `----.|  `--'  | |  `----./  _____  \  |  '--'  |  `--'  | |  |\  \----./  _____  \  \    /     / /_   __| | 
+ \______/__/     \__\ |_______| \______| \______/  |_______/__/     \__\ |_______/ \______/  | _| `._____/__/     \__\  \__/     |____| (__)_| 
+                                                                                                                                               
 ");
-bool flag;
+int a = 0, b = 0;
+double c = 0;
+bool flag, boolA, boolB;
 bool valido1 = false, valido2 = false;
 do
 {
@@ -18,14 +20,19 @@ do
     {
         flag = false;
 
-        Console.WriteLine("Ingrese dos numeros:");
+        if (operacion < 6)
+        {
+            Console.WriteLine("Ingrese dos numeros:");
 
-        bool boolA = int.TryParse(Console.ReadLine(), out int a);
-        bool boolB = int.TryParse(Console.ReadLine(), out int b);
-        
-        Console.WriteLine("Ingrese un numero:\n\t (Nota: Si ingresa un numero decimal, se tomara la parte entera del mismo)");
+            boolA = int.TryParse(Console.ReadLine(), out a);
+            boolB = int.TryParse(Console.ReadLine(), out b);
+        }
+        else
+        {
+            Console.WriteLine("Ingrese un numero:\n\t (Nota: Si ingresa un numero decimal, se tomara la parte entera del mismo)");
 
-        bool boolA = double.TryParse(Console.ReadLine(), out double a);
+            boolA = double.TryParse(Console.ReadLine(), out c);
+        }
 
         if (boolA)
         {
@@ -50,22 +57,22 @@ do
                     Console.WriteLine("El resto es: " + resultadoResto);
                     break;
                 case 5:
-                    Console.Write($"El valor absoluto de({a}) es {Math.Abs(a)}");
+                    Console.Write($"El valor absoluto de({c}) es {Math.Abs(c)}");
                     break;
                 case 6:
-                    Console.Write($"La Raiz cuadrada de({a}) es {Math.Pow(a, 2)}");
+                    Console.Write($"La Raiz cuadrada de({c}) es {Math.Pow(c, 2)}");
                     break;
                 case 7:
-                    Console.Write($"El cuadrado de({a}) es {Math.Sqrt(a)}");
+                    Console.Write($"El cuadrado de({c}) es {Math.Sqrt(c)}");
                     break;
                 case 8:
-                    Console.Write($"El Seno de({a}) es {Math.Asin(a)}");
+                    Console.Write($"El Seno de({c}) es {Math.Asin(c)}");
                     break;
                 case 9:
-                    Console.Write($"El Coseno de({a}) es {Math.Acos(a)}");
+                    Console.Write($"El Coseno de({c}) es {Math.Acos(c)}");
                     break;
                 case 10:
-                    Console.Write($"La Parte entera  de({a}) es {Math.Floor(a)}");
+                    Console.Write($"La Parte entera  de({c}) es {Math.Floor(c)}");
                     break;
             }
             Console.WriteLine("\n");
