@@ -1,107 +1,154 @@
-﻿
-Console.WriteLine(@"
-  ______     ___       __        ______  __    __   __          ___       _______   ______   .______          ___   ____    ____  ___      __  
- /      |   /   \     |  |      /      ||  |  |  | |  |        /   \     |       \ /  __  \  |   _  \        /   \  \   \  /   / |__ \    /_ | 
-|  ,----'  /  ^  \    |  |     |  ,----'|  |  |  | |  |       /  ^  \    |  .--.  |  |  |  | |  |_)  |      /  ^  \  \   \/   /     ) |    | | 
-|  |      /  /_\  \   |  |     |  |     |  |  |  | |  |      /  /_\  \   |  |  |  |  |  |  | |      /      /  /_\  \  \      /     / /     | | 
-|  `----./  _____  \  |  `----.|  `----.|  `--'  | |  `----./  _____  \  |  '--'  |  `--'  | |  |\  \----./  _____  \  \    /     / /_   __| | 
- \______/__/     \__\ |_______| \______| \______/  |_______/__/     \__\ |_______/ \______/  | _| `._____/__/     \__\  \__/     |____| (__)_| 
-                                                                                                                                               
-");
-int a = 0, b = 0;
-double c = 0;
-bool flag, boolA, boolB;
-bool valido1 = false, valido2 = false;
-do
+﻿string texto = "";
+Console.WriteLine("Ingrese un texto con ',': \n");
+texto = Console.ReadLine();
+int longitud = texto.Length;
+Console.WriteLine($"La longitud de su texto es: {longitud} \n");
+Console.WriteLine($"Los caracteres recorridos por el foreach son: \n");
+foreach (char c in texto)
 {
-    Console.WriteLine("\nIngrese la operacion que desea realizar:\n\t 1) Suma \n\t 2)Resta \n\t 3)Multiplicacion \n\t 4)Dividir\n\t 5)Valor Absoluto\n\t 6)Cuadrado\n\t 7)Raiz Cuadrada\n\t 8)Seno\n\t 9)Coseno\n\t 10) Parte entera de un tipo Float");
+    Console.WriteLine($"{c} \n");
+}
+Console.WriteLine("Ingrese una palabra a buscar en el texto: ");
+string ocurrencia = Console.ReadLine();
+if (texto.Contains(ocurrencia))
+{
+    Console.WriteLine($"La palabra está en la frase: {texto}");
+}
+else
+{
+    Console.WriteLine($"La palabra NO está en la frase: {texto}");
+}
+string mayuscula = texto.ToUpper();
+Console.WriteLine($"El texto en mayúsculas es: {mayuscula}");
+string minuscula = texto.ToLower();
+Console.WriteLine($"El texto en minúsculas es: {minuscula}");
+string separador = ",";
+Console.WriteLine($"El texto separado por '{separador}' es: ");
+string[] partes = texto.Split(separador);
+foreach (string parte in partes)
+{
+    Console.WriteLine(parte);
+} 
 
-    if (int.TryParse(Console.ReadLine(), out int operacion) || operacion < 1 || operacion > 10)
-    {
-        flag = false;
+string texto2;
+Console.WriteLine("Ingrese un 2do texto: ");
+texto2 = Console.ReadLine();
+string NuevoTexto = texto + " " + texto2;
+Console.WriteLine($"El texto concatenado es: {NuevoTexto}");
+Console.WriteLine($"Los caracteres recorridos por el foreach son: \n");
+foreach (char c in texto)
+{
+    Console.WriteLine($"{c} \n");
+}
 
-        if (operacion < 6)
+Console.WriteLine("Ingrese dos numeros: ");
+string numero = Console.ReadLine();
+bool boolA = int.TryParse(numero, out int num1);
+numero = Console.ReadLine();
+bool boolB = int.TryParse(numero, out int num2);
+Console.WriteLine($"La suma de los numeros {num1} y {num2} es: {num1 + num2}");
+
+Console.WriteLine("Ingrese una ecuación simple (ejemplo: 582+2):");
+string ecuacion = Console.ReadLine();
+double resultado = 0;
+char operador = ' ';
+if (ecuacion.Contains("+")) operador = '+';
+else if (ecuacion.Contains("-")) operador = '-';
+else if (ecuacion.Contains("*")) operador = '*';
+else if (ecuacion.Contains("/")) operador = '/';
+else
+{
+    Console.WriteLine("Ecuación no válida.");
+    return;
+}
+
+switch (operador)
+{
+    case '+':
+        string[] sumaPartes = ecuacion.Split('+');
+        if (sumaPartes.Length == 2)
         {
-            Console.WriteLine("Ingrese dos numeros:");
-
-            boolA = int.TryParse(Console.ReadLine(), out a);
-            boolB = int.TryParse(Console.ReadLine(), out b);
+            if (double.TryParse(sumaPartes[0], out double a) && double.TryParse(sumaPartes[1], out double b))
+            {
+                resultado = a + b;
+                Console.WriteLine($"El resultado es: {resultado}");
+            }
+            else
+            {
+                Console.WriteLine("Los operandos no son válidos.");
+            }
         }
         else
         {
-            Console.WriteLine("Ingrese un numero:\n\t (Nota: Si ingresa un numero decimal, se tomara la parte entera del mismo)");
-
-            boolA = double.TryParse(Console.ReadLine(), out c);
+            Console.WriteLine("Formato de suma incorrecto.");
         }
-
-        if (boolA)
+        break;
+    case '-':
+        string[] restaPartes = ecuacion.Split('-');
+        if (restaPartes.Length == 2)
         {
-            switch (operacion)
+            if (double.TryParse(restaPartes[0], out double a) && double.TryParse(restaPartes[1], out double b))
             {
-                case 1:
-                    int resultadoSuma = a + b;
-                    Console.WriteLine("El resultado de la suma: " + resultadoSuma);
-                    break;
-                case 2:
-                    int resultadoResta = a - b;
-                    Console.WriteLine("El resultado de la resta: " + resultadoResta);
-                    break;
-                case 3:
-                    int resultadoProducto = a * b;
-                    Console.WriteLine("El resultado del producto: " + resultadoProducto);
-                    break;
-                case 4:
-                    int resultadoDivision = a / b;
-                    int resultadoResto = a % b;
-                    Console.WriteLine("El resultado de la division: " + resultadoDivision);
-                    Console.WriteLine("El resto es: " + resultadoResto);
-                    break;
-                case 5:
-                    Console.Write($"El valor absoluto de({c}) es {Math.Abs(c)}");
-                    break;
-                case 6:
-                    Console.Write($"La Raiz cuadrada de({c}) es {Math.Pow(c, 2)}");
-                    break;
-                case 7:
-                    Console.Write($"El cuadrado de({c}) es {Math.Sqrt(c)}");
-                    break;
-                case 8:
-                    Console.Write($"El Seno de({c}) es {Math.Asin(c)}");
-                    break;
-                case 9:
-                    Console.Write($"El Coseno de({c}) es {Math.Acos(c)}");
-                    break;
-                case 10:
-                    Console.Write($"La Parte entera  de({c}) es {Math.Floor(c)}");
-                    break;
+                resultado = a - b;
+                Console.WriteLine($"El resultado es: {resultado}");
             }
-            Console.WriteLine("\n");
-            Console.WriteLine("Ingrese dos numeros para determinar el menor y el mayor \n");
-            do
+            else
             {
-                valido1 = int.TryParse(Console.ReadLine(), out int x);
-                valido2 = int.TryParse(Console.ReadLine(), out int y);
-                if (valido1 && valido2) {
-                    Console.WriteLine($"El mayor es {Math.Max(x, y)} y el menor es {Math.Min(x, y)}");
-                } else
-                {
-                    Console.WriteLine("Ingrese un dato valido \n");
-                }
-            } while (!valido1 || !valido2);
-
-            Console.WriteLine("Desea Realizar otro calculo? Y/N");
-
-            string repeticion = Console.ReadLine();
-            if (repeticion == "Y" || repeticion == "y")
-            {
-                flag = true;
+                Console.WriteLine("Los operandos no son válidos.");
             }
         }
-    }
-    else
-    {
-        Console.WriteLine("Ingrese una opcion valida");
-        flag = true;
-    }
+        else
+        {
+            Console.WriteLine("Formato de resta incorrecto.");
+        }
+        break;
+    case '*':
+        string[] multiplicacionPartes = ecuacion.Split('*');
+        if (multiplicacionPartes.Length == 2)
+        {
+            if (double.TryParse(multiplicacionPartes[0], out double a) && double.TryParse(multiplicacionPartes[1], out double b))
+            {
+                resultado = a * b;
+                Console.WriteLine($"El resultado es: {resultado}");
+            }
+            else
+            {
+                Console.WriteLine("Los operandos no son válidos.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Formato de multiplicación incorrecto.");
+        }
+        break;
+    case '/':
+        string[] divisionPartes = ecuacion.Split('/');
+        if (divisionPartes.Length == 2)
+        {
+            if (double.TryParse(divisionPartes[0], out double a) && double.TryParse(divisionPartes[1], out double b))
+            {
+                if (b != 0)
+                {
+                    resultado = a / b;
+                    Console.WriteLine($"El resultado es: {resultado}");
+                }
+                else
+                {
+                    Console.WriteLine("No se puede dividir por cero.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Los operandos no son válidos.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Formato de división incorrecto.");
+        }
+        break;
 
-} while (flag);
+    default:
+        Console.WriteLine("Operador no reconocido.");
+        return;
+}
